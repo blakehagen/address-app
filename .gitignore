@@ -5,5 +5,7 @@ node_modules/
 platforms/
 plugins/
 .idea/
+.io-config.json
+
 .DS_Store
 

@@ -12,24 +12,29 @@ var autoprefixer = require('gulp-autoprefixer');
 var gconcat      = require('gulp-concat');
 
 var paths = {
-  less: ['./less/**/*.less']
+  www: ['./www/**/*.*'],
+  less: './www/less/**/*.less'
 };
 
-gulp.task('default', ['less']);
+gulp.task('serve', ['less'], function (done) {
+  sh.exec('ionic serve --lab --livereload', done);
+});
 
 // COMPILE LESS --> CSS, CONCAT & MINIFY --> BUILD //
-gulp.task('less', function () {
-  return gulp.src(paths.less)
+gulp.task('less', function (done) {
+  gulp.src(paths.less)
     .pipe(plumber())
     .pipe(less())
     .pipe(gconcat('app.min.css'))
     .pipe(minifyCss())
     .pipe(autoprefixer({browsers: ['last 2 version', '> 5%']}))
-    .pipe(gulp.dest('./www/css/'));
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
 });
 
-gulp.task('watch', function () {
-  gulp.watch(paths.less, ['less']);
+var watcher = gulp.watch(paths.less, ['less']);
+watcher.on('change', function(event) {
+  console.log('File ' + event.path + ' was ' + event.type + ', running less...');
 });
 
 gulp.task('install', ['git-check'], function () {
