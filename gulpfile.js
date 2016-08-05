@@ -13,7 +13,7 @@ var gconcat      = require('gulp-concat');
 
 var paths = {
   www: ['./www/**/*.*'],
-  less: './www/less/**/*.less'
+  less: ['./www/less/**/*.less']
 };
 
 gulp.task('serve', ['less'], function (done) {

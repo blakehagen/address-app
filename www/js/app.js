@@ -1,10 +1,17 @@
 angular.module('addressApp', ['ionic'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('splash', {
         url: '/',
-        templateUrl: './js/features/home/homeTmpl.html',
-        controller: 'homeCtrl as homeCtrl'
+        templateUrl: './js/features/splash/splashTmpl.html',
+        controller: 'splashCtrl as splashCtrl'
+      });
+
+    $stateProvider
+      .state('user', {
+        url: '/user',
+        templateUrl: './js/features/user/userTmpl.html',
+        controller: 'userCtrl as userCtrl'
       });
 
     $urlRouterProvider
@@ -13,6 +20,7 @@ angular.module('addressApp', ['ionic'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
+      ionic.Platform.fullScreen(true, true);
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -26,5 +34,9 @@ angular.module('addressApp', ['ionic'])
         StatusBar.styleDefault();
       }
     });
+  })
+
+  .config(function ($ionicConfigProvider) {
+    $ionicConfigProvider.scrolling.jsScrolling(false)
   })
 
