@@ -5,14 +5,48 @@
           <img src="./img/snailbox.png" alt="">
           <h1>SnailBox</h1>
         </div>
-        <input type="text" placeholder="E-mail">
-        <input type="password" placeholder="Password">
-        <div class="btn flex-base-col-center" ng-click="splashCtrl.login()">
-          Log In
+
+        <!-- LOGIN VIEW -->
+        <div ng-if="splashCtrl.loginView">
+          <input type="text"
+                 placeholder="E-mail"
+                 ng-model="splashCtrl.data.email">
+          <input type="password"
+                 placeholder="Password"
+                 ng-model="splashCtrl.data.pw">
+          <div class="btn flex-base-col-center" ng-click="splashCtrl.login(splashCtrl.data)">
+            Log In
+          </div>
+          <div class="flex-base-row-center splash-row">
+            <p class="sign-up-txt" ng-click="splashCtrl.toggleEntryBox()">Create Account</p>
+          </div>
         </div>
-        <!--<div style="margin-top: 10px;" class="btn flex-base-col-center" ng-click="splashCtrl.testAPI()">-->
-        <!--Test API-->
-        <!--</div>-->
+
+        <!-- CREATE ACCOUNT VIEW -->
+        <div ng-if="splashCtrl.createAccountView">
+          <input type="text"
+                 placeholder="First Name"
+                 ng-model="splashCtrl.data.firstName">
+          <input type="text"
+                 placeholder="Last Name"
+                 ng-model="splashCtrl.data.lastName">
+          <input type="text"
+                 placeholder="E-mail"
+                 ng-model="splashCtrl.data.email">
+          <input type="password"
+                 placeholder="Password"
+                 ng-model="splashCtrl.data.pw">
+          <input type="password"
+                 placeholder="Confirm Password"
+                 ng-model="splashCtrl.data.pw2">
+          <div class="btn flex-base-col-center" ng-click="splashCtrl.login(splashCtrl.data)">
+            Register
+          </div>
+          <div class="flex-base-row-center splash-row">
+            <p class="sign-up-txt" ng-click="splashCtrl.toggleEntryBox()">Login</p>
+          </div>
+        </div>
+
       </div>
     </div>
 </ion-view>
