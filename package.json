@@ -1,8 +1,12 @@
 {
   "name": "ionic-project",
   "version": "1.1.1",
-  "description": "An Ionic project",
+  "description": "addressApp",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
     "gulp": "^3.5.6",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
@@ -13,8 +17,11 @@
     "gulp-sass": "^2.0.4"
   },
   "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
     "bower": "^1.3.3",
     "gulp-util": "^2.2.14",
+    "morgan": "^1.7.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
