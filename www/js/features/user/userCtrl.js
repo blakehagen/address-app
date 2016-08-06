@@ -1,7 +1,4 @@
-angular.module('addressApp').controller('userCtrl', function ($rootScope, $state) {
-
-  $rootScope.state = $state.current.name;
-  console.log('$rootScope.state', $rootScope.state);
+angular.module('addressApp').controller('userCtrl', function () {
 
   var userCtrl = this;
 

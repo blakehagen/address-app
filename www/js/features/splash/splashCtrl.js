@@ -1,9 +1,6 @@
-angular.module('addressApp').controller('splashCtrl', function ($rootScope, $state, $location, authService) {
+angular.module('addressApp').controller('splashCtrl', function ($location, authService) {
 
   var splashCtrl = this;
-
-  $rootScope.state = $state.current.name;
-  console.log('$rootScope.state', $rootScope.state);
 
   splashCtrl.login = function () {
     $location.path('/user')

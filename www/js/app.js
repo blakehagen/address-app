@@ -38,5 +38,5 @@ angular.module('addressApp', ['ionic'])
 
   .config(function ($ionicConfigProvider) {
     $ionicConfigProvider.scrolling.jsScrolling(false)
-  })
+  });
 
