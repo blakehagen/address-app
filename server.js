@@ -3,14 +3,8 @@
 // APP //
 const babel       = require('babel-core').transform('code');
 const express     = require('./server/config/express.js');
-const environment = process.env.NODE_ENV;
-
-// TODO --> add DB - POSTGRES?
-// require('./server/config/db.js')();
-
-// PASSPORT //
 const passport = require('passport');
-require('./server/config/passport-local')(passport); // PASSPORT CONFIG //
+const environment = process.env.NODE_ENV;
 
 // RUN EXPRESS //
 const app = express();
@@ -18,6 +12,7 @@ const app = express();
 // INITIALIZE PASSPORT //
 app.use(passport.initialize());
 app.use(passport.session());
+require('./server/config/passport-local')(passport); // PASSPORT CONFIG //
 
 // ====== //
 // ROUTES //

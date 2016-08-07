@@ -7,37 +7,46 @@ module.exports = (passport) => {
 
   // SERIALIZE USER //
   passport.serializeUser((user, done) => {
-    done(null, user._id);
+    done(null, user.id);
   });
-
+  //
   // DESERIALIZE USER //
   passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user);
-    });
+    models.User.findOne({
+      where: {
+        'id': id
+      }
+    }).then(user => {
+      done(null, user)
+    })
   });
 
   // ======= //
   // SIGN UP //
   // ======= //
   passport.use('local-signup', new LocalStrategy({
-    usernameField : 'email',
-    passwordField : 'password',
-    passReqToCallback: true}, (req, email, password, done) => {
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, (req, email, password, done) => {
 
     process.nextTick(() => {
-      console.log('email ================>', email);
 
-
-      models.User.isEmailUnique(email).then(() => {
-        console.log('success');
-        models.User.create(req.body).then(user => {
-          return done(null, user);
-        })
+      models.User.findOne({
+        where: {
+          'email': email
+        }
+      }).then(user => {
+        if (user) {
+          return done(null, false)
+        } else {
+          models.User.create(req.body).then(user => {
+            return done(null, user);
+          })
+        }
       }).catch(err => {
-        console.log('err', err);
-        return done(null, false);
-      });
+        return done(err);
+      })
     })
   }));
 

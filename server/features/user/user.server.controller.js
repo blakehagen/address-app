@@ -1,7 +1,5 @@
 'use strict';
 
-const models = require('../../models/index');
-
 module.exports = {
 
   signupSuccess: (req, res) => {

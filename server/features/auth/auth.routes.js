@@ -14,7 +14,7 @@ module.exports = (app, passport) => {
   );
 
   // USER SIGN UP FAILURE ROUTE //
-  app.get('/registerFailure', userCtrl.signupFailure)
+  app.get('/registerFailure', userCtrl.signupFailure);
 
   // USER SIGN UP SUCCESS ROUTE //
   app.get('/registerSuccess', userCtrl.signupSuccess)

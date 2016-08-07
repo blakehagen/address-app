@@ -1,4 +1,4 @@
-angular.module('addressApp', ['ionic'])
+angular.module('addressApp', ['ionic', 'ngCordova'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('splash', {
@@ -9,7 +9,7 @@ angular.module('addressApp', ['ionic'])
 
     $stateProvider
       .state('user', {
-        url: '/user',
+        url: '/user/:id',
         templateUrl: './js/features/user/userTmpl.html',
         controller: 'userCtrl as userCtrl'
       });

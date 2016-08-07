@@ -8,17 +8,22 @@ angular.module('addressApp').controller('splashCtrl', function ($location, authS
   splashCtrl.toggleEntryBox = function () {
     splashCtrl.loginView         = !splashCtrl.loginView;
     splashCtrl.createAccountView = !splashCtrl.createAccountView;
+  };
 
-
-  }
-
-
-  splashCtrl.login = function (data) {
+  splashCtrl.signup = function (data) {
     authService.signup(data).then(function (response) {
       console.log('response', response);
-      $location.path('/user')
+      $location.path('/user/' + response.id)
     });
   };
+
+
+  // splashCtrl.login = function (data) {
+  //   authService.login(data).then(function (response) {
+  //     console.log('response', response);
+  //     $location.path('/user')
+  //   });
+  // };
 
   // splashCtrl.testAPI = function () {
   //   authService.testAPI().then(function (response) {

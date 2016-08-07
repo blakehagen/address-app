@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "addressApp",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "cors": "^2.7.1",
@@ -39,5 +40,8 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios",
+    "android"
+  ]
 }

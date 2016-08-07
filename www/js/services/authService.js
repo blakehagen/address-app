@@ -1,5 +1,7 @@
 angular.module('addressApp').service('authService', function ($http, API) {
 
+  console.log('API', API.url);
+  
   this.testAPI = function () {
     return $http({
       method: 'GET',
@@ -16,7 +18,9 @@ angular.module('addressApp').service('authService', function ($http, API) {
       dataType: 'json',
       data: data
     }).then(function (response) {
-      return response;
+      return response.data;
+    }).catch(function (error) {
+      return error;
     })
   };
 
