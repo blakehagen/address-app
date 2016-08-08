@@ -1,4 +1,10 @@
 {
   "name": "addressApp",
-  "app_id": "3cd60d2d"
+  "app_id": "3cd60d2d",
+  "proxies": [
+    {
+      "path": "/signup",
+      "proxyUrl": "http://localhost:4500/api/v1/signup"
+    }
+  ]
 }

@@ -1,11 +1,9 @@
 angular.module('addressApp').service('authService', function ($http, API) {
 
-  console.log('API', API.url);
-  
   this.testAPI = function () {
     return $http({
       method: 'GET',
-      url: '/api/v1/test'
+      url: API.SERVER_LOCAL + 'test'
     }).then(function (response) {
       return response;
     })
@@ -14,7 +12,7 @@ angular.module('addressApp').service('authService', function ($http, API) {
   this.signup = function (data) {
     return $http({
       method: 'POST',
-      url: API.url + 'signup',
+      url: '/signup',
       dataType: 'json',
       data: data
     }).then(function (response) {

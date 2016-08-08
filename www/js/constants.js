@@ -5,5 +5,6 @@ angular.module('addressApp')
   })
 
   .constant('API', {
-    url: '/api/v1/'
+    SERVER_LOCAL: 'http://localhost:4500/api/v1/',
+    SERVER_HEROKU: 'https://address-app-server.herokuapp.com/api/v1/'
   });

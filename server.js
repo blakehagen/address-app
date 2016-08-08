@@ -3,7 +3,7 @@
 // APP //
 const babel       = require('babel-core').transform('code');
 const express     = require('./server/config/express.js');
-const passport = require('passport');
+const passport    = require('passport');
 const environment = process.env.NODE_ENV;
 
 // RUN EXPRESS //
@@ -28,7 +28,7 @@ app.get('/api/v1/test', (req, res) => {
 // ==== //
 // PORT //
 // ==== //
-const port = process.env.PORT || 3300;
+const port = process.env.PORT || 4500;
 app.listen(port, () => {
   console.log('Check me out on port', port);
 });

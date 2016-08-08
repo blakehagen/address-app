@@ -1,4 +1,4 @@
-angular.module('addressApp').controller('splashCtrl', function ($location, authService) {
+angular.module('addressApp').controller('splashCtrl', function ($rootScope, $location, authService) {
 
   var splashCtrl = this;
 
@@ -25,10 +25,11 @@ angular.module('addressApp').controller('splashCtrl', function ($location, authS
   //   });
   // };
 
-  // splashCtrl.testAPI = function () {
-  //   authService.testAPI().then(function (response) {
-  //     console.log('response', response);
-  //   })
-  // };
+  splashCtrl.testAPI = function () {
+    authService.testAPI().then(function (response) {
+      console.log('response', response);
+      $rootScope.user = response;
+    })
+  };
 
 }); // END CTRL
