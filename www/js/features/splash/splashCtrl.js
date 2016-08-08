@@ -13,7 +13,7 @@ angular.module('addressApp').controller('splashCtrl', function ($rootScope, $loc
   splashCtrl.signup = function (data) {
     authService.signup(data).then(function (response) {
       console.log('response', response);
-      $location.path('/user/' + response.id)
+      $location.path('/user/' + response.user.id)
     });
   };
 
@@ -21,15 +21,16 @@ angular.module('addressApp').controller('splashCtrl', function ($rootScope, $loc
   splashCtrl.login = function (data) {
     authService.login(data).then(function (response) {
       console.log('response', response);
-      $location.path('/user/' + response.id );
+      $rootScope.user = response.user;
+      console.log('$rootScope.user', $rootScope.user);
+      $location.path('/user/' + response.user.id);
     });
   };
 
-  splashCtrl.testAPI = function () {
-    authService.testAPI().then(function (response) {
-      console.log('response', response);
-      $rootScope.user = response;
-    })
-  };
+  // splashCtrl.testAPI = function () {
+  //   authService.testAPI().then(function (response) {
+  //     console.log('response', response);
+  //   })
+  // };
 
 }); // END CTRL
