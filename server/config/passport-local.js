@@ -2,6 +2,7 @@
 
 const LocalStrategy = require('passport-local').Strategy;
 const models        = require('../models/index');
+const bcrypt = require('bcrypt');
 
 module.exports = (passport) => {
 
@@ -40,7 +41,16 @@ module.exports = (passport) => {
         if (user) {
           return done(null, false)
         } else {
-          models.User.create(req.body).then(user => {
+
+          let newUser = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+          };
+
+
+          models.User.create(newUser).then(user => {
             return done(null, user);
           })
         }
@@ -54,24 +64,30 @@ module.exports = (passport) => {
   // ===== //
   // LOGIN //
   // ===== //
-  passport.use('local-login', new LocalStrategy((username, password, done) => {
+  passport.use('local-login', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, (req, email, password, done) => {
 
     process.nextTick(() => {
 
-      User.findOne({'username': username}, (err, user) => {
-        if (err) {
-          return done(err);
+      models.User.findOne({
+        where: {
+          'email': email
         }
-        if (!user) {
-          return done(null, false);
-        }
-
-        if (!user.validPassword(password)) {
-          return done(null, false);
+      }).then(user => {
+        if (user == null) {
+          return done(null, false)
         }
 
-        return done(null, user);
-      });
+        if (user.password === password) {
+          return done(null, user)
+        }
+        return done(null, false)
+      }).catch(err => {
+        return done(err);
+      })
     })
   }));
 

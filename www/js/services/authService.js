@@ -12,7 +12,20 @@ angular.module('addressApp').service('authService', function ($http, API) {
   this.signup = function (data) {
     return $http({
       method: 'POST',
-      url: '/signup',
+      url: API.SERVER_LOCAL + 'signup',
+      dataType: 'json',
+      data: data
+    }).then(function (response) {
+      return response.data;
+    }).catch(function (error) {
+      return error;
+    })
+  };
+
+  this.login = function (data) {
+    return $http({
+      method: 'POST',
+      url: API.SERVER_LOCAL + 'login',
       dataType: 'json',
       data: data
     }).then(function (response) {

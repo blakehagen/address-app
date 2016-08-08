@@ -18,12 +18,12 @@ angular.module('addressApp').controller('splashCtrl', function ($rootScope, $loc
   };
 
 
-  // splashCtrl.login = function (data) {
-  //   authService.login(data).then(function (response) {
-  //     console.log('response', response);
-  //     $location.path('/user')
-  //   });
-  // };
+  splashCtrl.login = function (data) {
+    authService.login(data).then(function (response) {
+      console.log('response', response);
+      $location.path('/user/' + response.id );
+    });
+  };
 
   splashCtrl.testAPI = function () {
     authService.testAPI().then(function (response) {

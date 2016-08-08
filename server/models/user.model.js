@@ -1,6 +1,7 @@
 'use strict';
 
 const BPromise = require('bluebird');
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize, DataTypes) => {
   let User;
@@ -12,23 +13,15 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
   }, {
     tableName: 'users',
-    timestamps: true,
-    classMethods: {
-      isEmailUnique(email) {
-        console.log('email', email);
-        return User.find({
-          where: {
-            email: email
-          }
-        })
-          .then(user => {
-            console.log('user', user);
-            if (user) {
-              return BPromise.reject(new Error('Account already registered with that email'));
-            }
-          });
-      },
-    }
+    timestamps: true
+    // classMethods: {
+    //   generateHash: function (password) {
+    //     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    //   },
+    //   validPassword: function (password) {
+    //     return bcrypt.compareSync(password, this.password);
+    //   }
+    // }
   });
   return User;
 };
