@@ -1,11 +1,23 @@
 <ion-view name="user">
   <ion-nav-title>
     <div class="header-text">SnailBox</div>
-
   </ion-nav-title>
 
-  <ion-content class="padding">
-    <!--{{ userCtrl.test }}-->
-    Welcome, {{ userCtrl.name }}
+  <ion-nav-buttons side="left">
+    <i class="icon ion-android-menu" ng-click="userCtrl.toggleMenu()"></i>
+  </ion-nav-buttons>
+
+  <ion-pane class="flex-base-col-center" ng-show="userCtrl.loading">
+    <div>
+      <ion-spinner icon="circles" class="spinner-load"></ion-spinner>
+    </div>
+  </ion-pane>
+
+  <ion-content ng-hide="userCtrl.loading">
+    <div style="margin-top: 10px; margin-left: 30px;">
+      <p style="margin:0">Welcome, {{ userCtrl.name }}</p>
+    </div>
   </ion-content>
 </ion-view>
+
+

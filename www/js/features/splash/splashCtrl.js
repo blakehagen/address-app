@@ -12,6 +12,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, authS
 
   splashCtrl.signup = function (data) {
     authService.signup(data).then(function (response) {
+      splashCtrl.data = {};
       console.log('response', response);
       $location.path('/user/' + response.user.id)
     });
@@ -19,6 +20,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, authS
 
   splashCtrl.login = function (data) {
     authService.login(data).then(function (response) {
+      splashCtrl.data = {};
       console.log('response', response);
       $location.path('/user/' + response.user.id);
     });

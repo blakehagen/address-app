@@ -1,14 +1,5 @@
 angular.module('addressApp').service('authService', function ($http, API) {
 
-  this.testAPI = function () {
-    return $http({
-      method: 'GET',
-      url: API.SERVER_HEROKU + 'test'
-    }).then(function (response) {
-      return response;
-    })
-  };
-
   this.signup = function (data) {
     return $http({
       method: 'POST',
