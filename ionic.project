@@ -3,8 +3,8 @@
   "app_id": "3cd60d2d",
   "proxies": [
     {
-      "path": "/signup",
-      "proxyUrl": "http://localhost:4500/api/v1/signup"
+      "path": "/getUser",
+      "proxyUrl": "http://address-app-server.herokuapp.com/api/v1/user/59"
     }
   ]
 }
