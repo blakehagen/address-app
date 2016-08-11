@@ -14,9 +14,32 @@
   </ion-pane>
 
   <ion-content ng-hide="userCtrl.loading">
-    <div style="margin-top: 10px; margin-left: 30px;">
-      <p style="margin:0">Welcome, {{ userCtrl.name }}</p>
+    <div class="main-page-wrap">
+      <!--<div class="container flex-base-col-center">-->
+        <!--<p>Hi, {{ userCtrl.name }}!</p>-->
+      <!--</div>-->
+      <div class="container">
+        <div class="row flex-ends">
+          <p class="address-title">My Address</p>
+          <i class="icon ion-compose"></i>
+        </div>
+      </div>
+
+      <div class="container my-address">
+        <p>506 E 300 S</p>
+        <p>Provo, UT 84606</p>
+      </div>
+
+      <div class="container flex-base-col-center">
+        <p>Address is locked. Only accessible to those you’ve given access to.</p>
+      </div>
+
+
     </div>
+
+
+
+
   </ion-content>
 </ion-view>
 

@@ -17,8 +17,9 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
 
   userCtrl.toggleMenu = function () {
     $location.path('/');
-
   }
+
+
 
 
 
