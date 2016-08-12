@@ -15,9 +15,7 @@
 
   <ion-content ng-hide="userCtrl.loading">
     <div class="main-page-wrap">
-      <!--<div class="container flex-base-col-center">-->
-        <!--<p>Hi, {{ userCtrl.name }}!</p>-->
-      <!--</div>-->
+
       <div class="container">
         <div class="row flex-ends">
           <p class="address-title">My Address</p>
@@ -26,23 +24,20 @@
       </div>
 
       <div class="container my-address">
-        <p>506 East 300 South</p>
-        <p>Provo, UT 84606</p>
-        <p>USA</p>
+        <p>{{ userCtrl.userData.Address.address1 }}</p>
+        <p ng-if="userCtrl.userData.Address.address2">{{ userCtrl.userData.Address.address2 }}</p>
+        <p ng-if="userCtrl.userData.Address.apt_suite">Apt. {{ userCtrl.userData.Address.apt_suite }}</p>
 
+        <p>{{ userCtrl.userData.Address.city }}, {{ userCtrl.userData.Address.state_province }} {{
+          userCtrl.userData.Address.postal_code }}</p>
+        <p>{{ userCtrl.userData.Address.country }}</p>
       </div>
 
       <div class="container flex-base-row-center address-note">
         <i class="icon ion-locked"></i>
-
         <p>Address only visible to those you’ve given access to.</p>
       </div>
-
-
     </div>
-
-
-
 
   </ion-content>
 </ion-view>
