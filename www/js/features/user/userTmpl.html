@@ -19,11 +19,11 @@
       <div class="container">
         <div class="row flex-ends">
           <p class="address-title">My Address</p>
-          <i class="icon ion-compose"></i>
+          <i class="icon ion-compose" ng-click="userCtrl.editMyAddress()"></i>
         </div>
       </div>
 
-      <div class="container my-address">
+      <div class="container my-address" ng-hide="userCtrl.edit">
         <p>{{ userCtrl.userData.Address.address1 }}</p>
         <p ng-if="userCtrl.userData.Address.address2">{{ userCtrl.userData.Address.address2 }}</p>
         <p ng-if="userCtrl.userData.Address.apt_suite">Apt. {{ userCtrl.userData.Address.apt_suite }}</p>
@@ -31,6 +31,17 @@
         <p>{{ userCtrl.userData.Address.city }}, {{ userCtrl.userData.Address.state_province }} {{
           userCtrl.userData.Address.postal_code }}</p>
         <p>{{ userCtrl.userData.Address.country }}</p>
+      </div>
+
+      <div class="container my-address" ng-show="userCtrl.edit">
+      edit address
+        <!--<p>{{ userCtrl.userData.Address.address1 }}</p>-->
+        <!--<p ng-if="userCtrl.userData.Address.address2">{{ userCtrl.userData.Address.address2 }}</p>-->
+        <!--<p ng-if="userCtrl.userData.Address.apt_suite">Apt. {{ userCtrl.userData.Address.apt_suite }}</p>-->
+
+        <!--<p>{{ userCtrl.userData.Address.city }}, {{ userCtrl.userData.Address.state_province }} {{-->
+          <!--userCtrl.userData.Address.postal_code }}</p>-->
+        <!--<p>{{ userCtrl.userData.Address.country }}</p>-->
       </div>
 
       <div class="container flex-base-row-center address-note">
