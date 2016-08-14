@@ -17,12 +17,12 @@
 }
 
 .row {
-  //border:1px solid red;
   .address-title {
     font-weight: 400;
     font-size: 20px;
     padding-left: 10px;
-    color: #455A64;
+    //color: #455A64;
+    color: @base;
   }
   .ion-compose {
     font-size: 24px;
@@ -39,17 +39,26 @@
 }
 
 .my-address {
-  margin: 0 25px;
-  border:1px solid #CCCCCC;
-  background: rgba(255, 255, 153, 0.1);
-  border-radius: 8px;
-  box-shadow: 3px 3px 3px #CCCCCC;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
   text-align: left;
   p {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     color: #455A64;
+    padding: 2px 16px;
+  }
+}
+
+.edit-address {
+  padding: 0;
+  input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #455A64;
+    padding-left: 10px;
   }
 }
 
@@ -61,4 +70,21 @@
     color: #455A64;
     margin-left: 8px;
   }
+}
+
+.button-base {
+  margin: 0 10px;
+  p {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.button-save {
+  background: @base;
+}
+
+.button-cancel {
+  background: #ED6464;
 }

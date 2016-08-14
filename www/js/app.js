@@ -4,7 +4,7 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
       .state('splash', {
         url: '/',
         templateUrl: './js/features/splash/splashTmpl.html',
-        controller: 'splashCtrl as splashCtrl'
+        controller: 'splashCtrl as splashCtrl',
       });
 
     $stateProvider

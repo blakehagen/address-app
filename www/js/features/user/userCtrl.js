@@ -24,7 +24,10 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
 
   userCtrl.editMyAddress = function () {
     userCtrl.edit = true;
-    console.log('edit clicked');
+  };
+
+  userCtrl.cancelEdit = function () {
+    userCtrl.edit = false;
   };
 
 
