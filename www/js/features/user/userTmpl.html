@@ -35,34 +35,39 @@
 
       <div class="container edit-address" ng-show="userCtrl.edit">
 
-        <div class="list">
-          <label class="item item-input">
-            <input type="text" placeholder="Street Address">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="Street Address (cont.)">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="Apt/Suite Number">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="City">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="State/Province">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="Postal Code">
-          </label>
-          <label class="item item-input">
-            <input type="text" placeholder="Country">
-          </label>
-        </div>
+        <input type="text"
+               placeholder="Street Address"
+               ng-model="userCtrl.userData.Address.address1">
+
+        <input type="text"
+               placeholder="Street Address (cont.)"
+               ng-model="userCtrl.userData.Address.address2">
+
+        <input type="text"
+               placeholder="Apt/Suite Number"
+               ng-model="userCtrl.userData.Address.apt_suite">
+
+        <input type="text"
+               placeholder="City"
+               ng-model="userCtrl.userData.Address.city">
+
+        <input type="text"
+               placeholder="State/Province"
+               ng-model="userCtrl.userData.Address.state_province">
+
+        <input type="text"
+               placeholder="Postal Code"
+               ng-model="userCtrl.userData.Address.postal_code">
+
+        <input type="text"
+               placeholder="Country"
+               ng-model="userCtrl.userData.Address.country">
+
         <div class="flex-base-row-center">
-          <button class="button button-base button-cancel" ng-click="userCtrl.cancelEdit()">
+          <button class="button button-base button-cancel" ng-if="userCtrl.userData.Address.address1"  ng-click="userCtrl.cancelEdit()">
             <p>Cancel Edit</p>
           </button>
-          <button class="button button-base button-save">
+          <button class="button button-base button-save" ng-click="userCtrl.saveAddress()">
             <p>Save Address</p>
           </button>
         </div>
