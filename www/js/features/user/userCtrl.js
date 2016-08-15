@@ -31,7 +31,6 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
   };
 
   userCtrl.saveAddress = function () {
-    console.log('userCtrl.userData.Address', userCtrl.userData.Address);
     addressService.updateAddress(userCtrl.userData.Address).then(function (response) {
       console.log('response --> update address -->', response);
       userCtrl.edit = false;
