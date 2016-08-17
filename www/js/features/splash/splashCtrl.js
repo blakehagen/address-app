@@ -26,7 +26,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
     authService.login(data).then(function (response) {
       splashCtrl.data = {};
       console.log('response', response);
-      if (response === 'Login Failed' || !response.data) {
+      if (response === 'Login Failed' || response.status === -1) {
         splashCtrl.err = true;
 
         $timeout(function () {
@@ -39,6 +39,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
       $location.path('/user/' + response.user.id);
       splashCtrl.loading = false;
     });
+
   };
 
 
