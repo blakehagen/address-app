@@ -1,13 +1,15 @@
 <ion-view hide-nav-bar="true">
   <div class="login-page-wrap flex-base-col-center">
-      <div class="entry">
-        <div class="title flex-base-row-center">
-          <img src="./img/snailbox.png" alt="">
-          <h1>SnailBox</h1>
-        </div>
+    <div class="entry">
+      <div class="title flex-base-row-center">
+        <img src="./img/snailbox.png" alt="">
+        <h1>SnailBox</h1>
+      </div>
 
-        <!-- LOGIN VIEW -->
-        <div ng-if="splashCtrl.loginView">
+      <!-- LOGIN VIEW -->
+      <div ng-if="splashCtrl.loginView">
+
+        <div ng-if="!splashCtrl.loading">
           <input type="text"
                  placeholder="E-mail"
                  ng-model="splashCtrl.data.email">
@@ -22,8 +24,19 @@
           </div>
         </div>
 
-        <!-- CREATE ACCOUNT VIEW -->
-        <div ng-if="splashCtrl.createAccountView">
+        <div class="flex-base-col-center" ng-if="splashCtrl.loading" style="padding-bottom: 16px;">
+          <ion-spinner icon="circles" class="spinner-load" ng-if="!splashCtrl.err"></ion-spinner>
+          <div ng-if="splashCtrl.err">
+            <p id="err">Login Failed</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CREATE ACCOUNT VIEW -->
+      <div ng-if="splashCtrl.createAccountView">
+        <div ng-if="!splashCtrl.loading">
+
           <input type="text"
                  placeholder="First Name"
                  ng-model="splashCtrl.data.firstName">
@@ -46,7 +59,8 @@
             <p class="sign-up-txt" ng-click="splashCtrl.toggleEntryBox()">Login</p>
           </div>
         </div>
-
       </div>
+
     </div>
+  </div>
 </ion-view>

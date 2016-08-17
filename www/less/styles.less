@@ -12,6 +12,15 @@ p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#err {
+  color: #ED6464;
+  z-index: 9999;
+}
+
 @base: #51A7F9;
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
@@ -98,15 +107,16 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: 18px;
     line-height: 48px;
   }
-  .btn {
-    cursor: pointer;
-    min-height: 48px;
-    max-height: 48px;
-    background: @base;
-    color: #FFFFFF;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 400;
-  }
+}
+
+.btn {
+  cursor: pointer;
+  min-height: 48px;
+  max-height: 48px;
+  background: @base;
+  color: #FFFFFF;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
 }
