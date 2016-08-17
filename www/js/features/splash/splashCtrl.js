@@ -12,6 +12,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
     splashCtrl.createAccountView = !splashCtrl.createAccountView;
   };
 
+  // TODO handle sign up error and loading spinner
   splashCtrl.signup = function (data) {
     authService.signup(data).then(function (response) {
       splashCtrl.data = {};
@@ -24,9 +25,8 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
     splashCtrl.loading = true;
 
     authService.login(data).then(function (response) {
-      splashCtrl.data = {};
       console.log('response', response);
-      if (response === 'Login Failed' || response.status === -1) {
+      if (response.status === 500 || response.status === -1) {
         splashCtrl.err = true;
 
         $timeout(function () {
@@ -35,7 +35,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         }, 1500);
         return;
       }
-
+      splashCtrl.data = {};
       $location.path('/user/' + response.user.id);
       splashCtrl.loading = false;
     });

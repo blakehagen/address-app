@@ -53,7 +53,14 @@
 
 .edit-address {
   padding: 0;
-  input {
+  input[type=text] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    box-shadow: none !important;
+    border-radius: 0;
+
     border-top: 1px solid #DDDDDD;
     width: 100%;
     font-family: 'Open Sans', sans-serif;
