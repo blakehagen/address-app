@@ -1,4 +1,4 @@
-angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, userService, addressService) {
+angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, userService, addressService, authService, $window) {
 
   var userCtrl = this;
 
@@ -6,6 +6,7 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
   userCtrl.edit    = false;
 
   userCtrl.getUserData = function () {
+
     userService.getUserById($stateParams.id).then(function (response) {
       console.log('response', response);
       userCtrl.userData = response;
@@ -13,10 +14,16 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
       if (!userCtrl.userData.Address.address1) {
         userCtrl.edit = true;
       }
+
+      userCtrl.localStorage = $window.localStorage;
+
+
     })
   };
 
   userCtrl.getUserData();
+
+
 
   userCtrl.toggleMenu = function () {
     $location.path('/');

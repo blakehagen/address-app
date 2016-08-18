@@ -25,6 +25,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
     splashCtrl.loading = true;
 
     authService.login(data).then(function (response) {
+
       console.log('response', response);
       if (response.status === 500 || response.status === -1) {
         splashCtrl.err = true;
@@ -35,6 +36,8 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         }, 1500);
         return;
       }
+      authService.setToken(response.token);
+      alert(response.token);
       splashCtrl.data = {};
       $location.path('/user/' + response.user.id);
       splashCtrl.loading = false;

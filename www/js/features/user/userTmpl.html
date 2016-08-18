@@ -31,6 +31,11 @@
         <p>{{ userCtrl.userData.Address.city }}, {{ userCtrl.userData.Address.state_province }} {{
           userCtrl.userData.Address.postal_code }}</p>
         <p>{{ userCtrl.userData.Address.country }}</p>
+
+        <pre>{{ userCtrl.localStorage | json }}</pre>
+
+
+
       </div>
 
       <div class="container edit-address" ng-show="userCtrl.edit">
