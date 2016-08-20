@@ -24,6 +24,7 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
       // ionic.Platform.fullScreen(true, true);
+      console.log('window.cordova.plugins.Keyboard', window.cordova.plugins.Keyboard);
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)

@@ -37,9 +37,9 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         return;
       }
       tokenService.setToken(response.token);
-      splashCtrl.data = {};
       $location.path('/user/' + response.user.id);
       splashCtrl.loading = false;
+      splashCtrl.data    = {};
     });
 
   };
