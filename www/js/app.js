@@ -1,5 +1,5 @@
 angular.module('addressApp', ['ionic', 'ngCordova'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('splash', {
         url: '/',
@@ -16,6 +16,9 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
 
     $urlRouterProvider
       .otherwise('/');
+
+    $httpProvider.interceptors.push('authInterceptor');
+
   })
 
   .run(function ($ionicPlatform) {

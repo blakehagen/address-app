@@ -1,24 +1,5 @@
 angular.module('addressApp').service('authService', function ($http, $window, API) {
 
-  var storage = $window.localStorage;
-  var cachedToken;
-
-  this.setToken = function (token) {
-    cachedToken = token;
-    storage.setItem('userToken', token);
-  };
-
-  this.getToken = function () {
-    if (!cachedToken) {
-      cachedToken = storage.getItem('userToken');
-    }
-    return cachedToken;
-  };
-
-  this.isAuthenticated = function () {
-    return !!getToken();
-  };
-
   this.signup = function (data) {
     return $http({
       method: 'POST',
@@ -40,6 +21,17 @@ angular.module('addressApp').service('authService', function ($http, $window, AP
       data: data
     }).then(function (response) {
       return response.data;
+    }).catch(function (error) {
+      return error;
+    })
+  };
+
+  this.getProtected = function () {
+    return $http({
+      method: 'GET',
+      url: API.SERVER_HEROKU + 'protected',
+    }).then(function (response) {
+      return response;
     }).catch(function (error) {
       return error;
     })

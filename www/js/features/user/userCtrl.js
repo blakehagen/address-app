@@ -16,12 +16,18 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
       }
 
       userCtrl.localStorage = $window.localStorage;
-
-
     })
   };
 
   userCtrl.getUserData();
+
+  userCtrl.getProtectedTest = function () {
+    authService.getProtected().then(function (response) {
+      console.log('response::::: ', response);
+    })
+  };
+
+  userCtrl.getProtectedTest();
 
 
 

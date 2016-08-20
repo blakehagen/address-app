@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/getUser",
-      "proxyUrl": "http://address-app-server.herokuapp.com/api/v1/user/59"
+      "proxyUrl": "http://localhost:4500/api/v1/protected"
     }
   ]
 }
