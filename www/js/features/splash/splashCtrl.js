@@ -1,4 +1,4 @@
-angular.module('addressApp').controller('splashCtrl', function ($location, $timeout, authService) {
+angular.module('addressApp').controller('splashCtrl', function ($location, $timeout, authService, tokenService) {
 
   var splashCtrl = this;
 
@@ -36,7 +36,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         }, 1500);
         return;
       }
-      authService.setToken(response.token);
+      tokenService.setToken(response.token);
       splashCtrl.data = {};
       $location.path('/user/' + response.user.id);
       splashCtrl.loading = false;
