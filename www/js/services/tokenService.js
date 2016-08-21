@@ -15,8 +15,14 @@ angular.module('addressApp').service('tokenService', function ($window) {
     return cachedToken;
   };
 
+  this.removeToken = function () {
+    cachedToken = null;
+    storage.removeItem('userToken');
+    console.log('token removed');
+  };
+
   this.isAuthenticated = function () {
-    return !!getToken();
+    return !!this.getToken();
   };
 
 });

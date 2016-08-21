@@ -25,25 +25,24 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
     splashCtrl.loading = true;
 
     authService.login(data).then(function (response) {
+      splashCtrl.data.password = '';
 
       console.log('response', response);
-      if (response.status === 500 || response.status === -1) {
+      if (response.message !== 'Login Success') {
         splashCtrl.err = true;
 
         $timeout(function () {
           splashCtrl.closeErr();
           splashCtrl.loading = false;
-        }, 1500);
-        return;
+        }, 2000);
+        return false;
+      } else {
+        tokenService.setToken(response.token);
+        $location.path('/user/' + response.user.id);
+        splashCtrl.loading = false;
       }
-      tokenService.setToken(response.token);
-      $location.path('/user/' + response.user.id);
-      splashCtrl.loading = false;
-      splashCtrl.data    = {};
     });
-
   };
-
 
   // CLOSE ERR //
   splashCtrl.closeErr = function () {

@@ -3,7 +3,8 @@ angular.module('addressApp').service('authService', function ($http, $window, AP
   this.signup = function (data) {
     return $http({
       method: 'POST',
-      url: API.SERVER_HEROKU + 'signup',
+      // url: API.SERVER_HEROKU + 'signup',
+      url: API.SERVER_LOCAL + 'signup',
       dataType: 'json',
       data: data
     }).then(function (response) {
@@ -16,7 +17,8 @@ angular.module('addressApp').service('authService', function ($http, $window, AP
   this.login = function (data) {
     return $http({
       method: 'POST',
-      url: API.SERVER_HEROKU + 'login',
+      // url: API.SERVER_HEROKU + 'login',
+      url: API.SERVER_LOCAL + 'login',
       dataType: 'json',
       data: data
     }).then(function (response) {
@@ -29,7 +31,8 @@ angular.module('addressApp').service('authService', function ($http, $window, AP
   this.getProtected = function () {
     return $http({
       method: 'GET',
-      url: API.SERVER_HEROKU + 'protected',
+      // url: API.SERVER_HEROKU + 'protected',
+      url: API.SERVER_LOCAL + 'protected',
     }).then(function (response) {
       return response;
     }).catch(function (error) {

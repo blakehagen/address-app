@@ -1,4 +1,4 @@
-angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, userService, addressService, authService, $window) {
+angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, $window, userService, addressService, authService, tokenService) {
 
   var userCtrl = this;
 
@@ -11,7 +11,7 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
       console.log('response', response);
       userCtrl.userData = response;
       userCtrl.loading  = false;
-      if (!userCtrl.userData.Address.address1) {
+      if (!userCtrl.userData.Address || !userCtrl.userData.Address.address1) {
         userCtrl.edit = true;
       }
 
@@ -23,15 +23,15 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
 
   userCtrl.getProtectedTest = function () {
     authService.getProtected().then(function (response) {
-      console.log('response::::: ', response);
+      console.log('protected route response::::: ', response);
     })
   };
 
   userCtrl.getProtectedTest();
 
 
-
-  userCtrl.toggleMenu = function () {
+  userCtrl.logOut = function () {
+    tokenService.removeToken();
     $location.path('/');
   };
 
