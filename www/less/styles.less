@@ -107,6 +107,7 @@ p {
   input {
     height: 48px;
     border-radius: 4px;
+    background: #FFFFFF;
     margin-bottom: 10px;
     padding: 0 12px;
     width: 100%;
@@ -115,10 +116,18 @@ p {
     font-size: 18px;
     line-height: 48px;
   }
+
+  .valid-input {
+    border: 1px solid #FFFFFF;
+  }
+  .invalid-input {
+    border: 1px solid #ED6464;
+  }
 }
 
 .btn {
   cursor: pointer;
+  border: none;
   min-height: 48px;
   max-height: 48px;
   background: @base;

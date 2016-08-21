@@ -10,15 +10,28 @@
       <div ng-if="splashCtrl.loginView">
 
         <div ng-if="!splashCtrl.loading">
-          <input type="text"
-                 placeholder="E-mail"
-                 ng-model="splashCtrl.data.email">
-          <input type="password"
-                 placeholder="Password"
-                 ng-model="splashCtrl.data.password">
-          <div class="btn flex-base-col-center" ng-click="splashCtrl.login(splashCtrl.data)">
-            Log In
-          </div>
+          <form name="login" ng-submit="splashCtrl.submitLoginForm(login.$valid, splashCtrl.data)" novalidate>
+
+            <input type="email"
+                   placeholder="E-mail"
+                   name="email"
+                   ng-model="splashCtrl.data.email"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="login.email.$invalid && !login.email.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <input type="password"
+                   placeholder="Password"
+                   name="password"
+                   ng-model="splashCtrl.data.password"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="login.password.$invalid && !login.password.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <button class="btn flex-base-col-center" type="submit">
+              Log In
+            </button>
+          </form>
           <div class="flex-base-row-center splash-row">
             <p class="sign-up-txt" ng-click="splashCtrl.toggleEntryBox()">Create Account</p>
           </div>
@@ -36,31 +49,66 @@
       <!-- CREATE ACCOUNT VIEW -->
       <div ng-if="splashCtrl.createAccountView">
         <div ng-if="!splashCtrl.loading">
+          <form name="register" ng-submit="splashCtrl.submitRegistrationForm(register.$valid, splashCtrl.data)"
+                novalidate>
 
-          <input type="text"
-                 placeholder="First Name"
-                 ng-model="splashCtrl.data.firstName">
-          <input type="text"
-                 placeholder="Last Name"
-                 ng-model="splashCtrl.data.lastName">
-          <input type="text"
-                 placeholder="E-mail"
-                 ng-model="splashCtrl.data.email">
-          <input type="password"
-                 placeholder="Password"
-                 ng-model="splashCtrl.data.password">
-          <input type="password"
-                 placeholder="Confirm Password"
-                 ng-model="splashCtrl.data.pw2">
-          <div class="btn flex-base-col-center" ng-click="splashCtrl.signup(splashCtrl.data)">
-            Register
-          </div>
+            <input type="text"
+                   placeholder="First Name"
+                   name="firstName"
+                   ng-model="splashCtrl.data.firstName"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="register.firstName.$invalid && !register.firstName.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <input type="text"
+                   placeholder="Last Name"
+                   name="lastName"
+                   ng-model="splashCtrl.data.lastName"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="register.lastName.$invalid && !register.lastName.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <input type="email"
+                   placeholder="E-mail"
+                   name="email"
+                   ng-model="splashCtrl.data.email"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="register.email.$invalid && !register.email.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <input type="password"
+                   placeholder="Password"
+                   name="password"
+                   ng-model="splashCtrl.data.password"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="register.password.$invalid && !register.password.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <input type="password"
+                   placeholder="Confirm Password"
+                   name="password2"
+                   ng-model="splashCtrl.data.pw2"
+                   ng-model-options="{debounce: 500}"
+                   ng-class="register.password2.$invalid && !register.password2.$pristine ? 'invalid-input' : 'valid-input'"
+                   required>
+
+            <button class="btn flex-base-col-center" type="submit">
+              Register
+            </button>
+          </form>
           <div class="flex-base-row-center splash-row">
             <p class="sign-up-txt" ng-click="splashCtrl.toggleEntryBox()">Login</p>
           </div>
         </div>
-      </div>
 
+        <div class="flex-base-col-center" ng-if="splashCtrl.loading" style="padding-bottom: 16px;">
+          <ion-spinner icon="circles" class="spinner-load" ng-if="!splashCtrl.err"></ion-spinner>
+          <div ng-if="splashCtrl.err">
+            <p id="err">{{ splashCtrl.registerMessage }}</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </ion-view>

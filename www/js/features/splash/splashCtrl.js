@@ -7,22 +7,70 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
   splashCtrl.loginView         = true;
   splashCtrl.createAccountView = false;
 
+  // TOGGLE LOGIN / REGISTER BOX //
   splashCtrl.toggleEntryBox = function () {
     splashCtrl.loginView         = !splashCtrl.loginView;
     splashCtrl.createAccountView = !splashCtrl.createAccountView;
   };
 
-  // TODO handle sign up error and loading spinner
-  splashCtrl.signup = function (data) {
+  // USER REGISTER //
+  splashCtrl.submitRegistrationForm = function (isValid, data) {
+    splashCtrl.loading = true;
+
+    if (!isValid) {
+      splashCtrl.err             = true;
+      splashCtrl.registerMessage = 'Please complete registration form';
+      $timeout(function () {
+        splashCtrl.closeErr();
+        splashCtrl.loading = false;
+      }, 2000);
+      return false;
+    } else if (data.pw2 !== data.password) {
+      splashCtrl.err             = true;
+      splashCtrl.registerMessage = 'Password does not match';
+      splashCtrl.data.password   = '';
+      splashCtrl.data.pw2        = '';
+
+      $timeout(function () {
+        splashCtrl.closeErr();
+        splashCtrl.loading = false;
+      }, 2000);
+      return false;
+    }
+
     authService.signup(data).then(function (response) {
       splashCtrl.data = {};
-      console.log('response', response);
-      $location.path('/user/' + response.user.id)
+
+      if (response.message !== 'Registration Success') {
+        splashCtrl.err             = true;
+        splashCtrl.registerMessage = 'Registration Error';
+
+        $timeout(function () {
+          splashCtrl.closeErr();
+          splashCtrl.loading = false;
+        }, 2000);
+        return false;
+      } else {
+        tokenService.setToken(response.token);
+        $location.path('/user/' + response.user.id);
+        splashCtrl.loading = false;
+      }
     });
   };
 
-  splashCtrl.login = function (data) {
+  // USER LOGIN //
+  splashCtrl.submitLoginForm = function (isValid, data) {
     splashCtrl.loading = true;
+
+    if (!isValid) {
+      splashCtrl.err           = true;
+      splashCtrl.data = {};
+      $timeout(function () {
+        splashCtrl.closeErr();
+        splashCtrl.loading = false;
+      }, 2000);
+      return false;
+    }
 
     authService.login(data).then(function (response) {
       splashCtrl.data.password = '';
@@ -48,6 +96,5 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
   splashCtrl.closeErr = function () {
     splashCtrl.err = false;
   }
-
 
 }); // END CTRL
