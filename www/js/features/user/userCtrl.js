@@ -1,6 +1,8 @@
-angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, $window, userService, addressService, authService, tokenService) {
+angular.module('addressApp').controller('userCtrl', function ($location, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
 
   var userCtrl = this;
+
+  console.log('$cordovaContacts on userCtrl: ', $cordovaContacts);
 
   userCtrl.loading = true;
   userCtrl.edit    = false;
@@ -48,7 +50,23 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
       console.log('response --> update address -->', response);
       userCtrl.edit = false;
     })
-  }
+  };
+
+  $ionicPlatform.ready(function() {
+
+    // This function can take some time  so be patient
+    userCtrl.getAllContacts = function() {
+      console.log('Dohvati');
+      $cordovaContacts.find({filter : '', multiple: true, desiredFields: [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
+        userCtrl.contacts = allContacts;
+        console.log('allContacts', JSON.stringify(allContacts));
+      });
+    };
+
+    userCtrl.getAllContacts();
+
+
+  });
 
 
 }); // END CTRL //

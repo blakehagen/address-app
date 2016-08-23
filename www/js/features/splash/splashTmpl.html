@@ -1,5 +1,5 @@
 <ion-view hide-nav-bar="true">
-  <div class="login-page-wrap flex-base-col-center">
+  <div class="login-page-wrap flex-base-col-start">
     <div class="entry">
       <div class="title flex-base-row-center">
         <img src="./img/snailbox.png" alt="">
@@ -16,7 +16,7 @@
                    placeholder="E-mail"
                    name="email"
                    ng-model="splashCtrl.data.email"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="login.email.$invalid && !login.email.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -24,7 +24,7 @@
                    placeholder="Password"
                    name="password"
                    ng-model="splashCtrl.data.password"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="login.password.$invalid && !login.password.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -56,7 +56,7 @@
                    placeholder="First Name"
                    name="firstName"
                    ng-model="splashCtrl.data.firstName"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="register.firstName.$invalid && !register.firstName.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -64,7 +64,7 @@
                    placeholder="Last Name"
                    name="lastName"
                    ng-model="splashCtrl.data.lastName"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="register.lastName.$invalid && !register.lastName.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -72,7 +72,7 @@
                    placeholder="E-mail"
                    name="email"
                    ng-model="splashCtrl.data.email"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="register.email.$invalid && !register.email.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -80,7 +80,7 @@
                    placeholder="Password"
                    name="password"
                    ng-model="splashCtrl.data.password"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="register.password.$invalid && !register.password.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
@@ -88,7 +88,7 @@
                    placeholder="Confirm Password"
                    name="password2"
                    ng-model="splashCtrl.data.pw2"
-                   ng-model-options="{debounce: 500}"
+                   ng-model-options="{debounce: 1500}"
                    ng-class="register.password2.$invalid && !register.password2.$pristine ? 'invalid-input' : 'valid-input'"
                    required>
 
