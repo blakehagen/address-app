@@ -2,8 +2,6 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
 
   var userCtrl = this;
 
-  console.log('$cordovaContacts on userCtrl: ', $cordovaContacts);
-
   userCtrl.loading = true;
   userCtrl.edit    = false;
 
@@ -23,13 +21,13 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
 
   userCtrl.getUserData();
 
-  userCtrl.getProtectedTest = function () {
-    authService.getProtected().then(function (response) {
-      console.log('protected route response::::: ', response);
-    })
-  };
-
-  userCtrl.getProtectedTest();
+  // userCtrl.getProtectedTest = function () {
+  //   authService.getProtected().then(function (response) {
+  //     console.log('protected route response::::: ', response);
+  //   })
+  // };
+  //
+  // userCtrl.getProtectedTest();
 
 
   userCtrl.logOut = function () {
@@ -52,19 +50,29 @@ angular.module('addressApp').controller('userCtrl', function ($location, $stateP
     })
   };
 
-  $ionicPlatform.ready(function() {
 
-    // This function can take some time  so be patient
-    userCtrl.getAllContacts = function() {
-      console.log('Dohvati');
-      $cordovaContacts.find({filter : '', multiple: true, desiredFields: [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
-        userCtrl.contacts = allContacts;
-        console.log('allContacts', JSON.stringify(allContacts));
-      });
+  // GET CONTACTS ON DEVICE === TESTING //
+  $ionicPlatform.ready(function () {
+
+    userCtrl.getContacts = function () {
+      userCtrl.phoneContacts = [];
+
+      function onSuccess(contacts) {
+        for (var i = 0; i < contacts.length; i++) {
+          var contact = contacts[i];
+          userCtrl.phoneContacts.push(contact);
+        }
+      }
+
+      function onError(contactError) {
+        alert(contactError);
+      }
+
+      var options      = {};
+      options.multiple = true;
+
+      $cordovaContacts.find(options).then(onSuccess, onError);
     };
-
-    userCtrl.getAllContacts();
-
 
   });
 

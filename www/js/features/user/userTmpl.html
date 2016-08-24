@@ -80,7 +80,14 @@
         <i class="icon ion-locked"></i>
         <p>Address only visible to those you’ve given access to.</p>
       </div>
-<pre>{{ userCtrl.contacts | json }}</pre>
+
+      <button class="button button-base button-save" ng-click="userCtrl.getContacts()">
+        <p>Get Contacts</p>
+      </button>
+
+      <div ng-repeat="contact in userCtrl.phoneContacts">
+        <p>{{contact.name.formatted}}</p>
+      </div>
     </div>
 
   </ion-content>
