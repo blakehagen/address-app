@@ -3,7 +3,6 @@ angular.module('addressApp').service('userService', function ($http, API) {
   this.getUserById = function (id) {
     return $http({
       method: 'GET',
-      // url: '/getUser'
       url: API.SERVER_HEROKU + 'user/' + id
     }).then(function (response) {
       return response.data;

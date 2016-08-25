@@ -52,7 +52,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         return false;
       } else {
         tokenService.setToken(response.token);
-        $location.path('/user/' + response.user.id);
+        $location.path('/user/' + response.user.id + '/address');
         splashCtrl.loading = false;
       }
     });

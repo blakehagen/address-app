@@ -1,8 +1,12 @@
 <ion-view name="user">
+
+  <!-- TODO put this in directive -->
   <ion-nav-title>
     <div class="header-text">SnailBox</div>
   </ion-nav-title>
 
+
+   <!--TODO put this in directive -->
   <ion-nav-buttons side="right">
     <i class="icon ion-log-out" ng-click="userCtrl.logOut()"></i>
   </ion-nav-buttons>
@@ -66,12 +70,15 @@
         </form>
 
         <div class="flex-base-row-center">
+
           <button class="button button-base button-cancel" ng-if="userCtrl.userData.Address.address1"
                   ng-click="userCtrl.cancelEdit()">
             <p>Cancel Edit</p>
           </button>
+
           <button class="button button-base button-save" ng-click="userCtrl.saveAddress()">
             <p>Save Address</p>
+
           </button>
         </div>
       </div>

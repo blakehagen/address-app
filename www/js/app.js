@@ -8,10 +8,17 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
       });
 
     $stateProvider
-      .state('user', {
+      .state('userHome', {
         url: '/user/:id',
-        templateUrl: './js/features/user/userTmpl.html',
-        controller: 'userCtrl as userCtrl'
+        templateUrl: './js/features/userHome/userHomeTmpl.html',
+        controller: 'userHomeCtrl as userCtrl'
+      });
+
+    $stateProvider
+      .state('addNewAddress', {
+        url: '/user/:id/address',
+        templateUrl: './js/features/addNewAddress/addNewAddressTmpl.html',
+        controller: 'newAddressCtrl as newAddressCtrl'
       });
 
     $urlRouterProvider

@@ -1,0 +1,73 @@
+<ion-view name="addAddress">
+  <ion-nav-title>
+    <div class="header-text">SnailBox</div>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <i class="icon ion-log-out" ng-click="userCtrl.logOut()"></i>
+  </ion-nav-buttons>
+
+  <ion-pane class="flex-base-col-center" ng-show="newAddressCtrl.loading">
+    <div>
+      <ion-spinner icon="circles" class="spinner-load"></ion-spinner>
+    </div>
+  </ion-pane>
+
+  <ion-content ng-hide="newAddressCtrl.loading" padding="true" overflow-scroll="false">
+    <div class="main-page-wrap">
+
+      <div class="container">
+        <div class="row flex-ends">
+          <p class="address-title">Add My Address</p>
+        </div>
+      </div>
+
+      <div class="container edit-address">
+
+        <!-- TODO add validation !!!-->
+        <form>
+          <input type="text"
+                 placeholder="Street Address"
+                 ng-model="newAddressCtrl.newAddress.address1">
+
+          <input type="text"
+                 placeholder="Street Address Line 2"
+                 ng-model="newAddressCtrl.newAddress.address2">
+
+          <input type="text"
+                 placeholder="Apt/Suite Number"
+                 ng-model="newAddressCtrl.newAddress.apt_suite">
+
+          <input type="text"
+                 placeholder="City"
+                 ng-model="newAddressCtrl.newAddress.city">
+
+          <input type="text"
+                 placeholder="State/Province"
+                 ng-model="newAddressCtrl.newAddress.state_province">
+
+          <input type="text"
+                 placeholder="Postal Code"
+                 ng-model="newAddressCtrl.newAddress.postal_code">
+
+          <input type="text"
+                 placeholder="Country"
+                 ng-model="newAddressCtrl.newAddress.country">
+        </form>
+
+        <div class="flex-base-row-center">
+          <button class="button button-base button-save" ng-click="newAddressCtrl.createNewAddress()">
+            <p>Save Address</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="container flex-base-row-center address-note">
+        <i class="icon ion-locked"></i>
+        <p>Address only visible to those you’ve given access to.</p>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>
