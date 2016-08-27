@@ -24,45 +24,72 @@
 
       <div class="container edit-address">
 
-        <!-- TODO add validation !!!-->
-        <form>
+        <form name="addAddress"
+              ng-submit="newAddressCtrl.createNewAddress(addAddress.$valid, newAddressCtrl.newAddress)" novalidate>
           <input type="text"
-                 placeholder="Street Address"
-                 ng-model="newAddressCtrl.newAddress.address1">
+                 name="address1"
+                 placeholder="Street Address*"
+                 ng-model="newAddressCtrl.newAddress.address1"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="addAddress.address1.$invalid && (!addAddress.address1.$pristine || addAddress.address1.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
+                 name="address2"
                  placeholder="Street Address Line 2"
                  ng-model="newAddressCtrl.newAddress.address2">
 
           <input type="text"
+                 name="apt_suite"
                  placeholder="Apt/Suite Number"
                  ng-model="newAddressCtrl.newAddress.apt_suite">
 
           <input type="text"
-                 placeholder="City"
-                 ng-model="newAddressCtrl.newAddress.city">
+                 name="city"
+                 placeholder="City*"
+                 ng-model="newAddressCtrl.newAddress.city"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="addAddress.city.$invalid && (!addAddress.city.$pristine || addAddress.city.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="State/Province"
-                 ng-model="newAddressCtrl.newAddress.state_province">
+                 name="state"
+                 placeholder="State/Province*"
+                 ng-model="newAddressCtrl.newAddress.state_province"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="addAddress.state.$invalid && ( !addAddress.state.$pristine || addAddress.state.$touched ) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="Postal Code"
-                 ng-model="newAddressCtrl.newAddress.postal_code">
+                 name="postalCode"
+                 placeholder="Postal Code*"
+                 ng-model="newAddressCtrl.newAddress.postal_code"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="addAddress.postalCode.$invalid && (!addAddress.postalCode.$pristine || addAddress.postalCode.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="Country"
-                 ng-model="newAddressCtrl.newAddress.country">
+                 name="country"
+                 placeholder="Country*"
+                 ng-model="newAddressCtrl.newAddress.country"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="addAddress.country.$invalid && (!addAddress.country.$pristine || addAddress.country.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
+
+          <div class="container flex-base-row-start address-note">
+            <p ng-if="!newAddressCtrl.error">* Required Field</p>
+            <p id="err" ng-if="newAddressCtrl.error">* Please complete required fields</p>
+          </div>
+
+          <div class="flex-base-row-center">
+            <button class="button button-base button-save" type="submit">
+              <p>Save Address</p>
+            </button>
+          </div>
         </form>
-
-        <div class="flex-base-row-center">
-          <button class="button button-base button-save" ng-click="newAddressCtrl.createNewAddress()">
-            <p>Save Address</p>
-          </button>
-        </div>
       </div>
 
-      <div class="container flex-base-row-center address-note">
+      <div class="container flex-base-row-start address-note">
         <i class="icon ion-locked"></i>
         <p>Address only visible to those you’ve given access to.</p>
       </div>

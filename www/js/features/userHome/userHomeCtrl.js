@@ -4,9 +4,10 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $st
 
   userCtrl.loading = true;
   userCtrl.edit    = false;
+  userCtrl.error   = false;
+
 
   userCtrl.getUserData = function () {
-
     userService.getUserById($stateParams.id).then(function (response) {
       console.log('response', response);
       userCtrl.userData = response;
@@ -22,19 +23,52 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $st
   };
 
   userCtrl.editMyAddress = function () {
-    userCtrl.edit = true;
+    userCtrl.edit           = true;
+    userCtrl.updatedAddress = {
+      UserId: userCtrl.userData.id,
+      addressId: userCtrl.userData.Address.id,
+      address1: userCtrl.userData.Address.address1,
+      address2: userCtrl.userData.Address.address2,
+      apt_suite: userCtrl.userData.Address.apt_suite,
+      city: userCtrl.userData.Address.city,
+      state_province: userCtrl.userData.Address.state_province,
+      postal_code: userCtrl.userData.Address.postal_code,
+      country: userCtrl.userData.Address.country
+    };
   };
 
   userCtrl.cancelEdit = function () {
-    userCtrl.edit = false;
+    userCtrl.edit           = false;
+    userCtrl.updatedAddress = null;
+    userCtrl.error          = false;
+    console.log('userCtrl.userData', userCtrl.userData);
+    console.log('userCtrl.updatedAddress', userCtrl.updatedAddress);
+
   };
 
-  userCtrl.saveAddress = function () {
-    addressService.updateAddress(userCtrl.userData.Address).then(function (response) {
-      console.log('response --> update address -->', response);
-      userCtrl.edit = false;
-    })
+  userCtrl.saveAddressEdit = function (isValid) {
+    console.log('isValid', isValid);
+    if (!isValid) {
+      userCtrl.error = true;
+      return false;
+    } else {
+      userCtrl.error = false;
+      console.log('userCtrl.updatedAddress', userCtrl.updatedAddress);
+      addressService.updateAddress(userCtrl.updatedAddress).then(function (response) {
+        console.log('response --> update address -->', response);
+        userCtrl.userData       = response;
+        userCtrl.updatedAddress = null;
+        userCtrl.edit           = false;
+      })
+    }
   };
+
+
+  userCtrl.onSwipeRight = function () {
+    console.log('you swiped right! YAY!');
+    alert('you swiped right! YAY!')
+  };
+
 
   // GET CONTACTS ON DEVICE === TESTING //
   $ionicPlatform.ready(function () {

@@ -13,9 +13,10 @@ angular.module('addressApp').service('addressService', function ($http, API) {
 
 
   this.updateAddress = function (addressData) {
+    console.log('addressData', addressData);
     return $http({
       method: 'PUT',
-      url: API.SERVER_HEROKU + 'address/' + addressData.id,
+      url: API.SERVER_HEROKU + 'address/' + addressData.addressId,
       dataType: 'JSON',
       data: addressData
     }).then(function (response) {

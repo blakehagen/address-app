@@ -1,12 +1,9 @@
 <ion-view name="user">
 
-  <!-- TODO put this in directive -->
   <ion-nav-title>
     <div class="header-text">SnailBox</div>
   </ion-nav-title>
 
-
-   <!--TODO put this in directive -->
   <ion-nav-buttons side="right">
     <i class="icon ion-log-out" ng-click="userCtrl.logOut()"></i>
   </ion-nav-buttons>
@@ -17,12 +14,13 @@
     </div>
   </ion-pane>
 
-  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false">
+  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false" on-swipe-right="userCtrl.onSwipeRight()">
     <div class="main-page-wrap">
 
       <div class="container">
         <div class="row flex-ends">
-          <p class="address-title">My Address</p>
+          <p class="address-title" ng-if="!userCtrl.edit">My Address</p>
+          <p class="address-title" ng-if="userCtrl.edit">Edit My Address</p>
           <i class="icon ion-compose" ng-hide="userCtrl.edit" ng-click="userCtrl.editMyAddress()"></i>
         </div>
       </div>
@@ -39,48 +37,71 @@
 
       <div class="container edit-address" ng-show="userCtrl.edit">
 
-        <form>
+        <form name="editAddress" ng-submit="userCtrl.saveAddressEdit(editAddress.$valid)" novalidate>
           <input type="text"
-                 placeholder="Street Address"
-                 ng-model="userCtrl.userData.Address.address1">
+                 name="address1"
+                 placeholder="Street Address*"
+                 ng-model="userCtrl.updatedAddress.address1"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="editAddress.address1.$invalid && (!editAddress.address1.$pristine || editAddress.address1.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="Street Address (cont.)"
-                 ng-model="userCtrl.userData.Address.address2">
+                 placeholder="Street Address Line 2"
+                 name="address1"
+                 ng-model="userCtrl.updatedAddress.address2">
 
           <input type="text"
                  placeholder="Apt/Suite Number"
-                 ng-model="userCtrl.userData.Address.apt_suite">
+                 ng-model="userCtrl.updatedAddress.apt_suite">
 
           <input type="text"
-                 placeholder="City"
-                 ng-model="userCtrl.userData.Address.city">
+                 name="city"
+                 placeholder="City*"
+                 ng-model="userCtrl.updatedAddress.city"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="editAddress.city.$invalid && (!editAddress.city.$pristine || editAddress.city.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="State/Province"
-                 ng-model="userCtrl.userData.Address.state_province">
+                 name="state"
+                 placeholder="State/Province*"
+                 ng-model="userCtrl.updatedAddress.state_province"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="editAddress.state.$invalid && (!editAddress.state.$pristine || editAddress.state.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
+                 name="postalCode"
                  placeholder="Postal Code"
-                 ng-model="userCtrl.userData.Address.postal_code">
+                 ng-model="userCtrl.updatedAddress.postal_code"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="editAddress.postalCode.$invalid && (!editAddress.postalCode.$pristine || editAddress.postalCode.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
 
           <input type="text"
-                 placeholder="Country"
-                 ng-model="userCtrl.userData.Address.country">
+                 name="country"
+                 placeholder="Country*"
+                 ng-model="userCtrl.updatedAddress.country"
+                 ng-model-options="{debounce: 500}"
+                 ng-class="editAddress.country.$invalid && (!editAddress.country.$pristine || editAddress.country.$touched) ? 'invalid-address' : 'valid-address'"
+                 required>
+
+          <div class="container flex-base-row-start address-note">
+            <p ng-if="!userCtrl.error">* Required Field</p>
+            <p id="err" ng-if="userCtrl.error">* Please complete required fields</p>          </div>
+
+          <div class="flex-base-row-center">
+            <button type="button" class="button button-base button-cancel" ng-if="userCtrl.userData.Address.address1"
+                    ng-click="userCtrl.cancelEdit()">
+              <p>Cancel Edit</p>
+            </button>
+
+            <button class="button button-base button-save" type="submit">
+              <p>Save Address</p>
+            </button>
+          </div>
         </form>
-
-        <div class="flex-base-row-center">
-
-          <button class="button button-base button-cancel" ng-if="userCtrl.userData.Address.address1"
-                  ng-click="userCtrl.cancelEdit()">
-            <p>Cancel Edit</p>
-          </button>
-
-          <button class="button button-base button-save" ng-click="userCtrl.saveAddress()">
-            <p>Save Address</p>
-
-          </button>
-        </div>
       </div>
 
       <div class="container flex-base-row-center address-note">
