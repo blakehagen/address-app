@@ -26,7 +26,7 @@ angular.module('addressApp').controller('newAddressCtrl', function ($stateParams
       addressService.createAddress(newAddressCtrl.newAddress).then(function (response) {
         console.log('new address response -->', response);
         if (response.message === 'Address Created') {
-          $location.path('/user/' + $stateParams.id);
+          $location.path('/user/' + response.address.UserId);
         }
       })
     }
