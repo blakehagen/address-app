@@ -28,7 +28,7 @@
       <div class="container my-address" ng-hide="userCtrl.edit">
         <p>{{ userCtrl.userData.Address.address1 }}</p>
         <p ng-if="userCtrl.userData.Address.address2">{{ userCtrl.userData.Address.address2 }}</p>
-        <p ng-if="userCtrl.userData.Address.apt_suite">Apt. {{ userCtrl.userData.Address.apt_suite }}</p>
+        <p ng-if="userCtrl.userData.Address.apt_suite">Apt/Ste {{ userCtrl.userData.Address.apt_suite }}</p>
 
         <p>{{ userCtrl.userData.Address.city }}, {{ userCtrl.userData.Address.state_province }} {{
           userCtrl.userData.Address.postal_code }}</p>

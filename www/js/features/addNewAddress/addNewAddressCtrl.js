@@ -1,9 +1,8 @@
-angular.module('addressApp').controller('newAddressCtrl', function ($stateParams, $location, userService, addressService) {
+angular.module('addressApp').controller('newAddressCtrl', function ($stateParams, $location, userService, addressService, tokenService) {
 
   var newAddressCtrl     = this;
   newAddressCtrl.loading = true;
   newAddressCtrl.error   = false;
-
 
   newAddressCtrl.getUserData = function () {
     userService.getUserById($stateParams.id).then(function (response) {
@@ -31,7 +30,11 @@ angular.module('addressApp').controller('newAddressCtrl', function ($stateParams
         }
       })
     }
+  };
 
+  newAddressCtrl.logOut = function () {
+    tokenService.removeToken();
+    $location.path('/');
   };
 
 

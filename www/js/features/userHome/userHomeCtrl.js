@@ -10,8 +10,13 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $st
   userCtrl.getUserData = function () {
     userService.getUserById($stateParams.id).then(function (response) {
       console.log('response', response);
-      userCtrl.userData = response;
-      userCtrl.loading  = false;
+      if (!response.Address) {
+        $location.path('/user/' + response.id + '/address');
+        userCtrl.loading = false;
+      } else {
+        userCtrl.userData = response;
+        userCtrl.loading  = false;
+      }
     })
   };
 
@@ -41,19 +46,14 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $st
     userCtrl.edit           = false;
     userCtrl.updatedAddress = null;
     userCtrl.error          = false;
-    console.log('userCtrl.userData', userCtrl.userData);
-    console.log('userCtrl.updatedAddress', userCtrl.updatedAddress);
-
   };
 
   userCtrl.saveAddressEdit = function (isValid) {
-    console.log('isValid', isValid);
     if (!isValid) {
       userCtrl.error = true;
       return false;
     } else {
       userCtrl.error = false;
-      console.log('userCtrl.updatedAddress', userCtrl.updatedAddress);
       addressService.updateAddress(userCtrl.updatedAddress).then(function (response) {
         console.log('response --> update address -->', response);
         userCtrl.userData       = response;
