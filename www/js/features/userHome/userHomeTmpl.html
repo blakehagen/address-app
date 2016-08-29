@@ -114,9 +114,10 @@
       </button>
 
       <div ng-repeat="contact in userCtrl.phoneContacts">
-        <p>{{contact.name.formatted}}</p>
+
+        <p>{{contact.name.formatted}} - {{contact.phoneNumbers[0].value}}</p>
+
       </div>
     </div>
-
   </ion-content>
 </ion-view>
