@@ -3,17 +3,7 @@
   "version": "1.1.1",
   "description": "addressApp",
   "dependencies": {
-    "babel-core": "^6.13.2",
-    "babel-preset-es2015": "^6.13.2",
-    "bcrypt": "^0.8.7",
-    "bcrypt-nodejs": "0.0.3",
-    "bluebird": "^3.4.1",
-    "body-parser": "^1.15.2",
     "bower": "^1.3.3",
-    "cors": "^2.7.1",
-    "express": "^4.14.0",
-    "express-session": "^1.14.0",
-    "fs": "0.0.2",
     "gulp": "^3.5.6",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
@@ -23,19 +13,11 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "ng-cordova": "^0.1.27-alpha",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "pg": "^6.0.3",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^3.23.6",
     "shelljs": "^0.3.0"
   },
   "devDependencies": {
-    "babel-core": "^6.13.2",
-    "babel-preset-es2015": "^6.13.2",
     "bower": "^1.3.3",
     "ios": "0.0.1",
-    "morgan": "^1.7.0",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
