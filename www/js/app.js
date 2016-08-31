@@ -21,6 +21,13 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
         controller: 'newAddressCtrl as newAddressCtrl'
       });
 
+    $stateProvider
+      .state('connect', {
+        url: '/user/:id/connect',
+        templateUrl: './js/features/connect/connectTmpl.html',
+        controller: 'connectCtrl as connectCtrl'
+      });
+
     $urlRouterProvider
       .otherwise('/');
 

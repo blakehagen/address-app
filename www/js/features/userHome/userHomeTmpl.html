@@ -4,17 +4,13 @@
     <div class="header-text">SnailBox</div>
   </ion-nav-title>
 
-  <ion-nav-buttons side="right">
-    <i class="icon ion-log-out" ng-click="userCtrl.logOut()"></i>
-  </ion-nav-buttons>
-
   <ion-pane class="flex-base-col-center" ng-show="userCtrl.loading">
     <div>
       <ion-spinner icon="circles" class="spinner-load"></ion-spinner>
     </div>
   </ion-pane>
 
-  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false" on-swipe-right="userCtrl.onSwipeRight()">
+  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false" on-swipe-left="userCtrl.goToConnect()">
     <div class="main-page-wrap">
 
       <div class="container">
@@ -121,7 +117,7 @@
   </ion-content>
   <ion-footer-bar style="padding: 0;border: none; height: 60px;">
 
-  <div class="button-footer flex-base-row-center" style="border-right: 1px solid #FFFFFF;">
+  <div class="button-footer flex-base-row-center" style="border-right: 1px solid #FFFFFF;" ng-click="userCtrl.goToConnect()">
     <p>Send Address</p>
   </div>
 

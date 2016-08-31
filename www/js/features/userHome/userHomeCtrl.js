@@ -1,4 +1,9 @@
-angular.module('addressApp').controller('userHomeCtrl', function ($location, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
+angular.module('addressApp').controller('userHomeCtrl', function ($location, $rootScope, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
+
+  $rootScope.logOut = function () {
+    tokenService.removeToken();
+    $location.path('/');
+  };
 
   var userCtrl = this;
 
@@ -63,11 +68,13 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $st
     }
   };
 
-
-  userCtrl.onSwipeRight = function () {
-    console.log('you swiped right! YAY!');
-    alert('you swiped right! YAY!')
+  userCtrl.goToConnect = function () {
+    $location.path('/user/' + $stateParams.id + '/connect');
   };
+
+  // userCtrl.onSwipeRight = function () {
+  //   userCtrl.goToConnect();
+  // };
 
 
   // GET CONTACTS ON DEVICE === TESTING //
