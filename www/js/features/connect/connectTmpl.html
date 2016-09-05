@@ -23,8 +23,9 @@
         </button>
       </div>
 
-      <div ng-repeat="contact in connectCtrl.phoneContacts">
+      <div ng-repeat="contact in connectCtrl.phoneContacts" style="border: 1px solid red; margin: 10px 5px">
         <p>{{contact.name.formatted}} - {{contact.phoneNumbers[0].value}}</p>
+        <p>{{ contact }}</p>
       </div>
     </div>
 

@@ -77,7 +77,6 @@
                  required>
 
           <div class="container flex-base-row-start address-note">
-            <p ng-if="!newAddressCtrl.error">* Required Field</p>
             <p id="err" ng-if="newAddressCtrl.error">* Please complete required fields</p>
           </div>
 
@@ -91,9 +90,8 @@
 
       <div class="container flex-base-row-center address-note">
         <i class="icon ion-locked"></i>
-        <p>Address only visible to those you’ve given access to.</p>
+        <p>Address is locked and is only visible to those you’ve given access to. Revoke access in Address Book.</p>
       </div>
-
     </div>
 
   </ion-content>

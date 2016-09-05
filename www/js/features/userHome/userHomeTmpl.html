@@ -103,24 +103,17 @@
         <i class="icon ion-locked"></i>
         <p>Address is locked and is only visible to those you’ve given access to. Revoke access in Address Book.</p>
       </div>
-
-      <!--<button class="button button-base button-save" ng-click="userCtrl.getContacts()">-->
-        <!--<p>Get Contacts</p>-->
-      <!--</button>-->
-
-
     </div>
   </ion-content>
+
   <ion-footer-bar style="padding: 0;border: none; height: 60px;">
+    <div class="button-footer flex-base-row-center" style="border-right: 1px solid #FFFFFF;"
+         ng-click="userCtrl.goToConnect()">
+      <p>Send Address</p>
+    </div>
 
-  <div class="button-footer flex-base-row-center" style="border-right: 1px solid #FFFFFF;" ng-click="userCtrl.goToConnect()">
-    <p>Send Address</p>
-  </div>
-
-  <div class="button-footer flex-base-row-center" style="border-left: 1px solid #FFF;">
-    <p>My Address Book</p>
-  </div>
-
-
+    <div class="button-footer flex-base-row-center" style="border-left: 1px solid #FFF;">
+      <p>My Address Book</p>
+    </div>
   </ion-footer-bar>
 </ion-view>
