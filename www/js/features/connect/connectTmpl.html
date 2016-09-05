@@ -8,13 +8,27 @@
     <i class="icon ion-ios-arrow-left" ng-click="back()"></i>
   </ion-nav-buttons>
 
+  <ion-content padding="true" overflow-scroll="false">
 
+    <div class="main-page-wrap">
+      <div class="container">
+        <div class="row flex-ends">
+          <p>Connect and invite your phone contacts so you can give the right people access to your address.</p>
+        </div>
+      </div>
 
-<ion-content>
+      <div class="flex-base-row-center">
+        <button class="button button-base button-save" ng-click="connectCtrl.getContacts()">
+          <p>Get Contacts</p>
+        </button>
+      </div>
 
-  <p>Connect/Send Tmpl</p>
+      <div ng-repeat="contact in connectCtrl.phoneContacts">
+        <p>{{contact.name.formatted}} - {{contact.phoneNumbers[0].value}}</p>
+      </div>
+    </div>
 
-</ion-content>
+  </ion-content>
 
 
 </ion-view>

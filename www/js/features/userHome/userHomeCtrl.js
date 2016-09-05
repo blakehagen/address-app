@@ -8,6 +8,7 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $ro
   $rootScope.back = function () {
     console.log('go back');
     $ionicHistory.goBack();
+    $location.path('/user/' + $stateParams.id );
   };
 
   var userCtrl = this;
@@ -82,30 +83,7 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $ro
   // };
 
 
-  // GET CONTACTS ON DEVICE === TESTING //
-  $ionicPlatform.ready(function () {
 
-    userCtrl.getContacts = function () {
-      userCtrl.phoneContacts = [];
-
-      function onSuccess(contacts) {
-        for (var i = 0; i < contacts.length; i++) {
-          var contact = contacts[i];
-          userCtrl.phoneContacts.push(contact);
-        }
-      }
-
-      function onError(contactError) {
-        alert(contactError);
-      }
-
-      var options      = {};
-      options.multiple = true;
-
-      $cordovaContacts.find(options).then(onSuccess, onError);
-    };
-
-  });
 
 
 }); // END CTRL //
