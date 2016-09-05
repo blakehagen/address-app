@@ -1,4 +1,4 @@
-angular.module('addressApp').controller('connectCtrl', function ($location, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
+angular.module('addressApp').controller('connectCtrl', function ($rootScope, $state, $location, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
 
   var connectCtrl = this;
 

@@ -1,8 +1,13 @@
-angular.module('addressApp').controller('userHomeCtrl', function ($location, $rootScope, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
+angular.module('addressApp').controller('userHomeCtrl', function ($location, $rootScope, $state, $stateParams, $window, $cordovaContacts, $ionicPlatform, $ionicHistory, userService, addressService, authService, tokenService) {
 
   $rootScope.logOut = function () {
     tokenService.removeToken();
     $location.path('/');
+  };
+
+  $rootScope.back = function () {
+    console.log('go back');
+    $ionicHistory.goBack();
   };
 
   var userCtrl = this;

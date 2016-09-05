@@ -10,7 +10,7 @@
     </div>
   </ion-pane>
 
-  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false" on-swipe-left="userCtrl.goToConnect()">
+  <ion-content ng-hide="userCtrl.loading" padding="true" overflow-scroll="false">
     <div class="main-page-wrap">
 
       <div class="container">
@@ -83,8 +83,8 @@
                  required>
 
           <div class="container flex-base-row-start address-note">
-            <p ng-if="!userCtrl.error">* Required Field</p>
-            <p id="err" ng-if="userCtrl.error">* Please complete required fields</p>          </div>
+            <p id="err" ng-if="userCtrl.error">* Please complete required fields</p>
+          </div>
 
           <div class="flex-base-row-center">
             <button type="button" class="button button-base button-cancel" ng-if="userCtrl.userData.Address.address1"
@@ -101,7 +101,7 @@
 
       <div class="container flex-base-row-center address-note">
         <i class="icon ion-locked"></i>
-        <p>Address only visible to those you’ve given access to.</p>
+        <p>Address is locked and is only visible to those you’ve given access to. Revoke access in Address Book.</p>
       </div>
 
       <!--<button class="button button-base button-save" ng-click="userCtrl.getContacts()">-->
