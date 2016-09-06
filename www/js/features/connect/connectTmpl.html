@@ -8,12 +8,12 @@
     <i class="icon ion-ios-arrow-left" ng-click="back()"></i>
   </ion-nav-buttons>
 
-  <ion-content padding="true" overflow-scroll="false">
+  <ion-content padding="false" overflow-scroll="false">
 
     <div class="main-page-wrap">
       <div class="container">
         <div class="row flex-ends">
-          <p>Connect and invite your phone contacts so you can give the right people access to your address.</p>
+          <p style="padding: 0 10px;">Connect and invite your phone contacts so you can give the right people access to your address.</p>
         </div>
       </div>
 
@@ -23,10 +23,39 @@
         </button>
       </div>
 
-      <div ng-repeat="contact in connectCtrl.phoneContacts" style="border: 1px solid red; margin: 10px 5px">
-        <p>{{contact.name.formatted}} - {{contact.phoneNumbers[0].value}}</p>
-        <p>{{ contact }}</p>
+      <div class="contacts">
+        <ion-list>
+          <ion-checkbox class="contact-checkbox">
+            <p class="name">Emily Hagen</p>
+            <p class="contact-phone">Mobile: 801-357-9616</p>
+          </ion-checkbox>
+
+          <ion-checkbox class="contact-checkbox">
+            <p class="name">Blake Hagen</p>
+            <p class="contact-phone">Mobile: 801-755-5175</p>
+          </ion-checkbox>
+        </ion-list>
       </div>
+
+
+      <div class="contacts">
+        <ion-list>
+          <ion-checkbox class="contact-checkbox" ng-repeat="contact in connectCtrl.phoneContacts">
+            <p class="name">{{contact.name}}</p>
+            <p ng-if="contact.mobile" class="contact-phone">{{contact.mobile}}</p>
+            <p ng-if="contact.work && !contact.mobile">Work: {{ contact.work }}</p>
+            <p ng-if="contact.home && (!contact.mobile && !contact.work)">Work: {{ contact.work }}</p>
+          </ion-checkbox>
+        </ion-list>
+      </div>
+
+
+
+      <!--<p>{{contact.name}}</p>-->
+      <!--<p ng-if="contact.mobile">Mobile: {{ contact.mobile }}</p>-->
+      <!--<p ng-if="contact.home">Home: {{ contact.home }}</p>-->
+      <!--<p ng-if="contact.work">Work: {{ contact.work }}</p>-->
+
     </div>
 
   </ion-content>

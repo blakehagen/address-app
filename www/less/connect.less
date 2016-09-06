@@ -1,0 +1,23 @@
+@import "styles.less";
+
+.contacts {
+  margin: 16px 0;
+  p {
+    font-family: 'Open Sans', sans-serif;
+    color: #455A64;
+  }
+  .name {
+    font-weight: 400;
+    font-size: 17px;
+  }
+  .contact-phone {
+    font-weight: 100;
+    font-size: 13px;
+  }
+
+  .contact-checkbox input:checked:before,
+  .contact-checkbox input:checked + .checkbox-icon:before {
+    background: @base;
+    border-color: @base;
+  }
+}

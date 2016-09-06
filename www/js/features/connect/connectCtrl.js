@@ -1,18 +1,23 @@
-angular.module('addressApp').controller('connectCtrl', function ($rootScope, $state, $location, $stateParams, $window, $cordovaContacts, $ionicPlatform, userService, addressService, authService, tokenService) {
+angular.module('addressApp').controller('connectCtrl', function ($cordovaContacts, $ionicPlatform) {
 
   var connectCtrl = this;
 
-  // GET CONTACTS ON DEVICE === TESTING //
+  // GET CONTACTS ON DEVICE //
   $ionicPlatform.ready(function () {
 
     connectCtrl.getContacts = function () {
       connectCtrl.phoneContacts = [];
 
       function onSuccess(contacts) {
-        for (var i = 0; i < contacts.length; i++) {
-          var contact = contacts[i];
-          connectCtrl.phoneContacts.push(contact);
-        }
+        _.each(contacts, function (contact) {
+          var contactObj = {};
+          _.each(contact.phoneNumbers, function (number) {
+            var type = number.type;
+            contactObj.name = contact.name.formatted;
+            contactObj[type] = number.value;
+          });
+          connectCtrl.phoneContacts.push(contactObj);
+        });
       }
 
       function onError(contactError) {
