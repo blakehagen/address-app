@@ -34,17 +34,12 @@
             <p class="name">Blake Hagen</p>
             <p class="contact-phone">Mobile: 801-755-5175</p>
           </ion-checkbox>
-        </ion-list>
-      </div>
 
-
-      <div class="contacts">
-        <ion-list>
           <ion-checkbox class="contact-checkbox" ng-repeat="contact in connectCtrl.phoneContacts">
             <p class="name">{{contact.name}}</p>
-            <p ng-if="contact.mobile" class="contact-phone">{{contact.mobile}}</p>
+            <p ng-if="contact.mobile" class="contact-phone">Mobile: {{contact.mobile}}</p>
             <p ng-if="contact.work && !contact.mobile">Work: {{ contact.work }}</p>
-            <p ng-if="contact.home && (!contact.mobile && !contact.work)">Work: {{ contact.work }}</p>
+            <p ng-if="contact.home && (!contact.mobile && !contact.work)">Home: {{ contact.home }}</p>
           </ion-checkbox>
         </ion-list>
       </div>
