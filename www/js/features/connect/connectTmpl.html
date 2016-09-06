@@ -13,7 +13,8 @@
     <div class="main-page-wrap">
       <div class="container">
         <div class="row flex-ends">
-          <p style="padding: 0 10px;">Connect and invite your phone contacts so you can give the right people access to your address.</p>
+          <p style="padding: 0 10px;">Connect and invite your phone contacts so you can give the right people access to
+            your address.</p>
         </div>
       </div>
 
@@ -38,12 +39,11 @@
           <ion-checkbox class="contact-checkbox" ng-repeat="contact in connectCtrl.phoneContacts">
             <p class="name">{{contact.name}}</p>
             <p ng-if="contact.mobile" class="contact-phone">Mobile: {{contact.mobile}}</p>
-            <p ng-if="contact.work && !contact.mobile">Work: {{ contact.work }}</p>
-            <p ng-if="contact.home && (!contact.mobile && !contact.work)">Home: {{ contact.home }}</p>
+            <p ng-if="contact.work && !contact.mobile" class="contact-phone">Work: {{ contact.work }}</p>
+            <p ng-if="contact.home && (!contact.mobile && !contact.work)" class="contact-phone">Home: {{ contact.home}}</p>
           </ion-checkbox>
         </ion-list>
       </div>
-
 
 
       <!--<p>{{contact.name}}</p>-->
