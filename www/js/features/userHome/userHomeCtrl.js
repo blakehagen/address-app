@@ -8,7 +8,7 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $ro
   $rootScope.back = function () {
     console.log('go back');
     $ionicHistory.goBack();
-    $location.path('/user/' + $stateParams.id );
+    $location.path('/user/' + $stateParams.id);
   };
 
   var userCtrl = this;
@@ -77,13 +77,6 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $ro
   userCtrl.goToConnect = function () {
     $location.path('/user/' + $stateParams.id + '/connect');
   };
-
-  // userCtrl.onSwipeRight = function () {
-  //   userCtrl.goToConnect();
-  // };
-
-
-
 
 
 }); // END CTRL //

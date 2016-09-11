@@ -15,6 +15,13 @@ angular.module('addressApp', ['ionic', 'ngCordova'])
       });
 
     $stateProvider
+      .state('editAddress', {
+        url: '/user/:id/edit',
+        templateUrl: './js/features/editAddress/editAddressTmpl.html',
+        controller: 'editAddressCtrl as editAddressCtrl'
+      });
+
+    $stateProvider
       .state('addNewAddress', {
         url: '/user/:id/address',
         templateUrl: './js/features/addNewAddress/addNewAddressTmpl.html',
