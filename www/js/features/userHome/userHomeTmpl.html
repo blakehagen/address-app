@@ -4,7 +4,7 @@
     <div class="header-text">SnailBox</div>
   </ion-nav-title>
 
-  <ion-pane class="flex-base-col-center" ng-show="userCtrl.loading">
+  <ion-pane class="flex-base-col-center" ng-if="userCtrl.loading">
     <div>
       <ion-spinner icon="circles" class="spinner-load"></ion-spinner>
     </div>
@@ -17,11 +17,11 @@
         <div class="row flex-ends">
           <p class="address-title" ng-if="!userCtrl.edit">My Address</p>
           <p class="address-title" ng-if="userCtrl.edit">Edit My Address</p>
-          <i class="icon ion-compose" ng-hide="userCtrl.edit" ng-click="userCtrl.editMyAddress()"></i>
+          <i class="icon ion-compose" ng-if="!userCtrl.edit" ng-click="userCtrl.editMyAddress()"></i>
         </div>
       </div>
 
-      <div class="container my-address" ng-hide="userCtrl.edit">
+      <div class="container my-address" ng-if="!userCtrl.edit">
         <p>{{ userCtrl.userData.Address.address1 }}</p>
         <p ng-if="userCtrl.userData.Address.address2">{{ userCtrl.userData.Address.address2 }}</p>
         <p ng-if="userCtrl.userData.Address.apt_suite">Apt/Ste {{ userCtrl.userData.Address.apt_suite }}</p>
@@ -31,7 +31,7 @@
         <p>{{ userCtrl.userData.Address.country }}</p>
       </div>
 
-      <div class="container edit-address" ng-show="userCtrl.edit">
+      <div class="container edit-address" ng-if="userCtrl.edit">
 
         <form name="editAddress" ng-submit="userCtrl.saveAddressEdit(editAddress.$valid)" novalidate>
           <input type="text"
@@ -106,7 +106,7 @@
     </div>
   </ion-content>
 
-  <ion-footer-bar style="padding: 0;border: none; height: 60px;" ng-hide="userCtrl.edit">
+  <ion-footer-bar style="padding: 0;border: none; height: 60px;" ng-if="!userCtrl.edit">
     <div class="button-footer flex-base-row-center" style="border-right: 1px solid #FFFFFF;"
          ng-click="userCtrl.goToConnect()">
       <p>Send Address</p>

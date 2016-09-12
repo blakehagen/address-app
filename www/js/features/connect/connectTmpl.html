@@ -26,17 +26,17 @@
 
       <div class="contacts">
         <ion-list>
-          <ion-checkbox class="contact-checkbox">
+          <ion-checkbox class="item-checkbox-right contact-checkbox test">
             <p class="name">Emily Hagen</p>
             <p class="contact-phone">Mobile: 801-357-9616</p>
           </ion-checkbox>
 
-          <ion-checkbox class="contact-checkbox">
+          <ion-checkbox class="item-checkbox-right contact-checkbox test">
             <p class="name">Blake Hagen</p>
             <p class="contact-phone">Mobile: 801-755-5175</p>
           </ion-checkbox>
 
-          <ion-checkbox class="contact-checkbox" ng-repeat="contact in connectCtrl.phoneContacts">
+          <ion-checkbox class="item-checkbox-right contact-checkbox" ng-repeat="contact in connectCtrl.phoneContacts">
             <p class="name">{{contact.name}}</p>
             <p ng-if="contact.mobile" class="contact-phone">Mobile: {{contact.mobile}}</p>
             <p ng-if="contact.work && !contact.mobile" class="contact-phone">Work: {{ contact.work }}</p>
