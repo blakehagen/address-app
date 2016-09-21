@@ -15,6 +15,8 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
 
   // USER REGISTER //
   splashCtrl.submitRegistrationForm = function (isValid, data) {
+    console.log('data', data);
+    console.log('isValid', isValid);
     splashCtrl.loading = true;
 
     if (!isValid) {
@@ -52,7 +54,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         return false;
       } else {
         tokenService.setToken(response.token);
-        $location.path('/user/' + response.user.id + '/address');
+        $location.path('/user/' + response.user._id + '/address');
         splashCtrl.loading = false;
       }
     });
@@ -86,7 +88,7 @@ angular.module('addressApp').controller('splashCtrl', function ($location, $time
         return false;
       } else {
         tokenService.setToken(response.token);
-        $location.path('/user/' + response.user.id);
+        $location.path('/user/' + response.user._id);
         splashCtrl.loading = false;
       }
     });
