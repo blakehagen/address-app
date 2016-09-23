@@ -19,10 +19,11 @@ angular.module('addressApp').controller('userHomeCtrl', function ($location, $ro
 
 
   userCtrl.getUserData = function () {
+    console.log('$stateParams.id', $stateParams.id);
     userService.getUserById($stateParams.id).then(function (response) {
       console.log('response', response);
       if (_.isEmpty(response.Address)) {
-        $location.path('/user/' + response.id + '/address');
+        $location.path('/user/' + response._id + '/address');
         userCtrl.loading = false;
       } else {
         userCtrl.userData = response;
